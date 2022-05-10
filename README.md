@@ -48,9 +48,13 @@ The second argument is the byte sent by the AVR (==MOSI) to be used by your simu
 The function returns what your device sends back to the AVR (==MISO).
 
 ## Example
-In this example i want to connect three devices to the SPI**1** (ie the **USART1 used as a SPI-master**, thats why in the code i use `AVR_IOCTL_*UART*_GETIRQ`) of an Atmega1284P: A nRF24L01+, some external RAM and a SD-card.
-The nRF has its CE-pin (called CSN, don't confuse this with the CE-pin for RX/TX!) connected to PD6. There are two nRF (and two AVR, second not shown here) inside the "circuit" so the simulation code of the nRF needs a pointer to the correct data structure.
-The RAM has its CE-pin connected to PC2. The pointer to the device-internal data structure is `NULL`, the simulation code of the RAM does not support multiple instances and will ignore this argument.
+In this example i want to connect three devices to the SPI**1** (ie the **USART1 used as a SPI-master**, thats why in the code i use `AVR_IOCTL_*UART*_GETIRQ`) of an Atmega1284P:
+* A nRF24L01+
+* some external RAM
+* a SD-card
+
+The nRF has its CE-pin (called CSN, don't confuse this with the CE-pin for RX/TX!) connected to PD6. There are two nRF (and two AVR, second not shown here) inside the "circuit" so the simulation code of the nRF needs a pointer to the correct data structure.  
+The RAM has its CE-pin connected to PC2. The pointer to the device-internal data structure is `NULL`, the simulation code of the RAM does not support multiple instances and will ignore this argument.  
 The SD-card has its CE-pin connected to PD7. Same thing for the pointer as above.
 ```
 spi_dispatcher_t * dispatch1=make_new_spi_dispatcher(avr1, "AVR1");
