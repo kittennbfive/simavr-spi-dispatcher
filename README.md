@@ -1,7 +1,7 @@
 # simavr-spi-dispatcher
 
 ## What is this?
-This is a little helper for [simavr](https://github.com/buserror/simavr) that allows to connect multiple devices to the same SPI-bus. Each device must have a separate CS-pin (active low). To make it work on *real hardware* each device must tristate its output (MOSI) when CS is high (don't worry about this for simulation, only worry about it if/once you want to build the real hardware - check datasheet of the corresponding devices).
+This is a little helper for [simavr](https://github.com/buserror/simavr) that allows to connect multiple devices to the same SPI-bus. Each device must have a separate CS-pin (active low). To make it work on *real hardware* each device must tristate its output (MISO) when CS is high (don't worry about this for simulation, only worry about it if/once you want to build the real hardware - check datasheet of the corresponding devices).
 
 ## Licence and disclaimer
 AGPLv3+ and NO WARRANTY!
