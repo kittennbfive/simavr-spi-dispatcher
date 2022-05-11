@@ -20,7 +20,7 @@ Call `make_new_spi_dispatcher()` *after having initialized the AVR (`avr_init()`
 ### Second step: Connect the dispatcher to the AVR and the SPI-devices
 Call `init_spi_dispatcher()` with the following arguments:
 * A pointer to the dispatcher-structure as returned by `make_new_spi_dispatcher()`.
-* A list of device-names separated by ',' - for example "nRF,RAM,SD" if you want to connect a nRF24L01+, some external SPI-RAM and a SD-card to the SPI-bus on your AVR.
+* A list of device-names separated by ',' - for example "nRF,RAM,SD" if you want to connect a [nRF24L01+](https://github.com/kittennbfive/simavr-nRF24), some external [SPI-RAM](https://github.com/kittennbfive/simavr-RAM-23LCV512) and a SD-card to the SPI-bus on your AVR.
 * The IRQ for SPI-input of the AVR (MOSI) as returned by `avr_io_getirq()`.
 * The IRQ for SPI-output of the AVR (MISO) as returned by `avr_io_getirq()`.
 * For each device you need need to specifiy *four additional arguments*, see below.
