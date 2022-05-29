@@ -21,15 +21,15 @@ Call `make_new_spi_dispatcher()` *after having initialized the AVR (`avr_init()`
 Call `init_spi_dispatcher()` with the following arguments:
 * A pointer to the dispatcher-structure as returned by `make_new_spi_dispatcher()`.
 * A list of device-names separated by ',' - for example "nRF,RAM,SD" if you want to connect a [nRF24L01+](https://github.com/kittennbfive/simavr-nRF24), some external [SPI-RAM](https://github.com/kittennbfive/simavr-RAM-23LCV512) and a SD-card to the SPI-bus on your AVR.
-* The IRQ for SPI-input of the AVR (MOSI) as returned by `avr_io_getirq()`.
-* The IRQ for SPI-output of the AVR (MISO) as returned by `avr_io_getirq()`.
+* The IRQ for SPI-input of the AVR (MISO) as returned by `avr_io_getirq()`.
+* The IRQ for SPI-output of the AVR (MOSI) as returned by `avr_io_getirq()`.
 * For each device you need need to specifiy *four additional arguments*, see below.
 
 #### Additional arguments for each SPI-device for `init_spi_dispatcher()`
 1) A pointer ( `void *` ) to some data structure used by your SPI-device. This argument is simply passed to the callback-functions for each simulated device so you can have multiple instances of the same SPI-device connected to your AVR (or even several AVR inside the simulation, see [this issue](https://github.com/buserror/simavr/issues/476)) if supported by the simulation code of the device. This parameter can be `NULL` if not needed.
 2) The IRQ for the CS-pin of the device as returned by `avr_io_getirq()`. Mandatory.
 3) A pointer to a callback-function (of type `cb_cs_changed_t`) from the simulator code of the device that will be called when the CS-pin of the device changes state. You can specify `NULL` if you don't need this callback.
-4) A pointer to a callback-function (of type `cb_spi_transaction_t`) from the simulator code of the device that will be called for each SPI-read-write to the device (onyl if CS is low). Mandatory.
+4) A pointer to a callback-function (of type `cb_spi_transaction_t`) from the simulator code of the device that will be called for each SPI-read-write to the device (only if CS is low). Mandatory.
 
 ## API to be provided by simulation code for a device to be used/connected through this dispatcher
 ### callback-function for CS-pin level change
